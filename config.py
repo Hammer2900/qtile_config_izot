@@ -2,7 +2,10 @@ from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 
+import subprocess
+
 mod = "mod4"
+alt = "mod1"
 
 keys = [
     # Switch between windows in current stack pane
@@ -54,6 +57,13 @@ keys = [
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
+
+    Key([mod], "F2", lazy.spawn("amixer --quiet set Master 1-")),
+    Key([mod], "F3", lazy.spawn("amixer --quiet set Master 1+")),
+    Key([mod, "shift"], "space", lazy.window.toggle_floating()),
+    Key([mod], "q", lazy.window.kill()),
+    Key([mod], "F5", lazy.spawn("sakura -e ranger")),
+    Key([mod], "F6", lazy.spawn("pcmanfm")),
 ]
 
 groups = [
@@ -134,7 +144,7 @@ def dialogs(window):
         window.floating = True
 
     @hook.subscribe.client_new
-    def grouper(window, windows={'firefox-aurora': 'browser', 'skype': 'skype'}):
+    def grouper(window, windows={'firefox-aurora': 'browser', 'skype': 'skype', 'pcmanfm': 'fm'}):
 
         """
         This function relies on the contentious feature of default arguments
@@ -194,6 +204,20 @@ cursor_warp = False
 floating_layout = layout.Floating()
 auto_fullscreen = True
 focus_on_window_activation = "smart"
+
+@hook.subscribe.startup
+def startup():
+    # rc_dir = "/home/arkchar/.config/wmStartupScripts/"
+    # subprocess.Popen("sleep 3".split())
+    subprocess.Popen(['feh', '--bg-scale', '/home/izot/Downloads/Best-Beach-Wallpapers-Background-HD-Wallpaper.jpg'])
+    subprocess.Popen(['skype'])
+    # execute_once("synergys")
+    # execute_once("xcompmgr")
+    # execute_once(rc_dir + "xmodmap.py")
+    # execute_once("ibus-daemon --xim")
+    # execute_once("hsetroot -tile /home/arkchar/Pictures/desktop.jpg")
+    # execute_once(rc_dir + "trackpoint.sh")
+    # execute_once("xsetroot -cursor_name left_ptr")
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
