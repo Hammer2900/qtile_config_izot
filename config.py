@@ -88,10 +88,12 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Arial',
-    fontsize=16,
-    padding=3,
+    font='ttf-droid',
+    fontsize=14,
+    padding=5,
 )
+
+default_data = dict(fontsize=12, foreground="FF6600", background="1D1D1D", font="ttf-droid")
 
 screens = [
     Screen(
@@ -99,9 +101,16 @@ screens = [
             [
                 widget.GroupBox(),
                 widget.Prompt(),
-                widget.TextBox("default config", name="default"),
+                widget.Sep(),
+                widget.Spacer(),
+                widget.Sep(),
+                # widget.BitcoinTicker(),
+                # widget.LaunchBar(progs=[('thunderbird', 'thunderbird -safe-mode', 'launch thunderbird in safe mode')]),
+                widget.KeyboardLayout(configured_keyboards=['us', 'ru']),
+                widget.Volume(),
+                # widget.TextBox("default config", name="default"),
                 widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.Clock(format='%Y-%m-%d %I:%M'),
             ],
             30,
         ),
@@ -117,9 +126,9 @@ screens = [
 # Drag floating layouts.
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
-        start=lazy.window.get_position()),
+         start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
-        start=lazy.window.get_size()),
+         start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
