@@ -68,7 +68,7 @@ keys = [
 ]
 
 groups = [
-    Group('browser'),
+    Group('browser', {'layout': 'max'}),
     Group('term'),
     Group('fm'),
     Group('skype'),
@@ -93,7 +93,7 @@ for index, grp in enumerate(groups):
     ])
 
 layouts = [
-    layout.Max(),
+    layout.RatioTile(border_width=2, margin=6),
     layout.Stack(stacks=2),
     layout.Tile(ratio=0.25),
 ]
@@ -120,7 +120,7 @@ screens = [
                 widget.KeyboardLayout(configured_keyboards=['us', 'ru'], **default_data),
                 widget.Volume(**default_data),
                 # widget.TextBox("default config", name="default"),
-                widget.Systray(**default_data),
+                widget.Systray(icon_size=16, **default_data),
                 widget.Clock(format='%Y-%m-%d %I:%M', **default_data),
             ],
             30,
@@ -211,6 +211,7 @@ def startup():
     # rc_dir = "/home/arkchar/.config/wmStartupScripts/"
     # subprocess.Popen("sleep 3".split())
     subprocess.Popen(['feh', '--bg-scale', '/home/izot/Downloads/Best-Beach-Wallpapers-Background-HD-Wallpaper.jpg'])
+    subprocess.Popen(['compton', '-f'])
     subprocess.Popen(['skype'])
     # execute_once("synergys")
     # execute_once("xcompmgr")
