@@ -130,11 +130,11 @@ group_app_dict = {
 
 @hook.subscribe.client_new
 def dialogs(window):
-    if (window.window.get_wm_type() == 'dialog' or window.window.get_wm_transient_for()):
+    if window.window.get_wm_type() == 'dialog' or window.window.get_wm_transient_for():
         window.floating = True
 
     @hook.subscribe.client_new
-    def grouper(window, windows=group_app_dict):
+    def grouper(window, windows={'firefox-aurora': 'browser', 'skype': 'skype'}):
 
         """
         This function relies on the contentious feature of default arguments
