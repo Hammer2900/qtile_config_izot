@@ -28,6 +28,9 @@ keys = [
         lazy.layout.shuffle_up()
     ),
 
+    Key([mod, "control"], "r", lazy.restart()),
+    Key([mod, "control"], "q", lazy.shutdown()),
+
     # Switch window focus to other pane(s) of stack
     Key(
         [mod], "space",
@@ -65,6 +68,7 @@ keys = [
     Key([mod], "F5", lazy.spawn("sakura -e ranger")),
     Key([mod], "F6", lazy.spawn("pcmanfm")),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
+    Key([mod], "w", lazy.layout.Max()),
 ]
 
 groups = [
@@ -128,6 +132,7 @@ screens = [
         top=bar.Bar(
             [
                 widget.WindowName(**default_data),
+                # widget.BitcoinTicker(**default_data),
                 widget.Clock(format='%I:%M', **default_data),
             ],
             30,
