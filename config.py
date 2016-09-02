@@ -109,18 +109,18 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.GroupBox(),
-                widget.Prompt(),
+                widget.GroupBox(**default_data),
+                widget.Prompt(**default_data),
                 widget.Sep(),
                 widget.Spacer(),
                 widget.Sep(),
                 # widget.BitcoinTicker(),
                 # widget.LaunchBar(progs=[('thunderbird', 'thunderbird -safe-mode', 'launch thunderbird in safe mode')]),
-                widget.KeyboardLayout(configured_keyboards=['us', 'ru']),
-                widget.Volume(),
+                widget.KeyboardLayout(configured_keyboards=['us', 'ru'], **default_data),
+                widget.Volume(**default_data),
                 # widget.TextBox("default config", name="default"),
-                widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %I:%M'),
+                widget.Systray(**default_data),
+                widget.Clock(format='%Y-%m-%d %I:%M', **default_data),
             ],
             30,
         ),
@@ -144,7 +144,7 @@ def dialogs(window):
         window.floating = True
 
     @hook.subscribe.client_new
-    def grouper(window, windows={'firefox-aurora': 'browser', 'skype': 'skype', 'pcmanfm': 'fm'}):
+    def grouper(window, windows={'firefox-aurora': 'browser', 'skype': 'skype', 'pcmanfm': 'fm', 'jetbrains-pycharm': 'pycharm'}):
 
         """
         This function relies on the contentious feature of default arguments
