@@ -45,7 +45,7 @@ keys = [
         [mod, "shift"], "Return",
         lazy.layout.toggle_split()
     ),
-    Key([mod], "Return", lazy.spawn("xterm")),
+    Key([mod], "Return", lazy.spawn("sakura")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
@@ -83,7 +83,8 @@ for index, grp in enumerate(groups):
 
 layouts = [
     layout.Max(),
-    layout.Stack(num_stacks=2)
+    layout.Stack(stacks=2),
+    layout.Tile(ratio=0.25),
 ]
 
 widget_defaults = dict(
@@ -98,10 +99,15 @@ screens = [
             [
                 widget.GroupBox(),
                 widget.Prompt(),
-                widget.WindowName(),
                 widget.TextBox("default config", name="default"),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+            ],
+            30,
+        ),
+        top=bar.Bar(
+            [
+                widget.WindowName()
             ],
             30,
         ),
