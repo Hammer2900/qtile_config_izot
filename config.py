@@ -110,7 +110,7 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.GroupBox(**default_data),
+                widget.GroupBox(margin_x=1, margin_y=1, **default_data),
                 widget.Prompt(**default_data),
                 widget.Sep(),
                 widget.Spacer(),
@@ -121,13 +121,14 @@ screens = [
                 widget.Volume(**default_data),
                 # widget.TextBox("default config", name="default"),
                 widget.Systray(icon_size=16, **default_data),
-                widget.Clock(format='%Y-%m-%d %I:%M', **default_data),
+                widget.Spacer(width=6),
             ],
             30,
         ),
         top=bar.Bar(
             [
-                widget.WindowName(**default_data)
+                widget.WindowName(**default_data),
+                widget.Clock(format='%I:%M', **default_data),
             ],
             30,
         ),
@@ -141,7 +142,8 @@ group_app_dict = {
 
 @hook.subscribe.client_new
 def dialogs(window):
-    if window.window.get_wm_type() == 'dialog' or window.window.get_wm_transient_for():
+    floating_types = ['notification', 'toolbar', 'splash', 'dialog']
+    if window.window.get_wm_type() in floating_types or window.window.get_wm_transient_for():
         window.floating = True
 
     @hook.subscribe.client_new
