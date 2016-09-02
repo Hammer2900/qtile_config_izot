@@ -64,6 +64,7 @@ keys = [
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "F5", lazy.spawn("sakura -e ranger")),
     Key([mod], "F6", lazy.spawn("pcmanfm")),
+    Key([mod], "f", lazy.window.toggle_fullscreen()),
 ]
 
 groups = [
@@ -126,7 +127,7 @@ screens = [
         ),
         top=bar.Bar(
             [
-                widget.WindowName()
+                widget.WindowName(**default_data)
             ],
             30,
         ),
