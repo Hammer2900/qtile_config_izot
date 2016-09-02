@@ -56,18 +56,30 @@ keys = [
     Key([mod], "r", lazy.spawncmd()),
 ]
 
-groups = [Group(i) for i in "asdfuiop"]
+groups = [
+    Group('browser'),
+    Group('term'),
+    Group('fm'),
+    Group('skype'),
+    Group('pycharm'),
+    Group('6'),
+    Group('7'),
+    Group('8'),
+    Group('9'),
+]
 
-for i in groups:
-    # mod1 + letter of group = switch to group
-    keys.append(
-        Key([mod], i.name, lazy.group[i.name].toscreen())
-    )
+for index, grp in enumerate(groups):
+    keys.extend([
 
-    # mod1 + shift + letter of group = switch to & move focused window to group
-    keys.append(
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name))
-    )
+        # switch to group
+        Key([mod], str(index + 1), lazy.group[grp.name].toscreen()),
+
+        # send to group
+        Key([mod, "shift"], str(index + 1), lazy.window.togroup(grp.name)),
+
+        # swap with group
+        Key([mod, "shift"], str(index + 1), lazy.group.swap_groups(grp.name))
+    ])
 
 layouts = [
     layout.Max(),
