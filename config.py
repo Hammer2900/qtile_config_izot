@@ -68,7 +68,7 @@ keys = [
     Key([mod], "F5", lazy.spawn("sakura -e ranger")),
     Key([mod], "F6", lazy.spawn("pcmanfm")),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
-    Key([mod], "w", lazy.layout.Max()),
+    Key([mod], "w", lazy.layout.maximize()),
 ]
 
 groups = [
@@ -206,7 +206,7 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []
 main = None
-follow_mouse_focus = True
+follow_mouse_focus = False
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating()
