@@ -73,7 +73,7 @@ keys = [
 
 groups = [
     Group('browser', {'layout': 'max'}),
-    Group('term'),
+    Group('text'),
     Group('fm'),
     Group('skype'),
     Group('pycharm'),
@@ -84,17 +84,42 @@ groups = [
 ]
 
 for index, grp in enumerate(groups):
-    keys.extend([
+    if grp.name == 'skype':
+        keys.extend([
+            Key(['control', alt], 's', lazy.group[grp.name].toscreen()),
+            Key(['control', alt, "shift"], 's', lazy.window.togroup(grp.name)),
+            Key(['control', alt, "shift"], 's', lazy.group.swap_groups(grp.name))
+        ])
+    elif grp.name == 'fm':
+        keys.extend([
+            Key(['control'], 'Tab', lazy.group[grp.name].toscreen()),
+            Key(['control', "shift"], 'Tab', lazy.window.togroup(grp.name)),
+            Key(['control', "shift"], 'Tab', lazy.group.swap_groups(grp.name))
+        ])
+    elif grp.name == 'pycharm':
+        keys.extend([
+            Key(['control', alt], 'z', lazy.group[grp.name].toscreen()),
+            Key(['control', alt, "shift"], 'z', lazy.window.togroup(grp.name)),
+            Key(['control', alt, "shift"], 'z', lazy.group.swap_groups(grp.name))
+        ])
+    elif grp.name == 'text':
+        keys.extend([
+            Key(['control', alt], 'a', lazy.group[grp.name].toscreen()),
+            Key(['control', alt, "shift"], 'a', lazy.window.togroup(grp.name)),
+            Key(['control', alt, "shift"], 'a', lazy.group.swap_groups(grp.name))
+        ])
+    else:
+        keys.extend([
 
-        # switch to group
-        Key([mod], str(index + 1), lazy.group[grp.name].toscreen()),
+            # switch to group
+            Key([mod], str(index + 1), lazy.group[grp.name].toscreen()),
 
-        # send to group
-        Key([mod, "shift"], str(index + 1), lazy.window.togroup(grp.name)),
+            # send to group
+            Key([mod, "shift"], str(index + 1), lazy.window.togroup(grp.name)),
 
-        # swap with group
-        Key([mod, "shift"], str(index + 1), lazy.group.swap_groups(grp.name))
-    ])
+            # swap with group
+            Key([mod, "shift"], str(index + 1), lazy.group.swap_groups(grp.name))
+        ])
 
 layouts = [
     layout.RatioTile(border_width=2, margin=6),
