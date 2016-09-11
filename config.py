@@ -108,6 +108,12 @@ for index, grp in enumerate(groups):
             Key(['control', alt, "shift"], 'a', lazy.window.togroup(grp.name)),
             Key(['control', alt, "shift"], 'a', lazy.group.swap_groups(grp.name))
         ])
+    elif grp.name == 'browser':
+        keys.extend([
+            Key([mod], 'Escape', lazy.group[grp.name].toscreen()),
+            # Key(['control', mod, "shift"], lazy.window.togroup(grp.name)),
+            # Key(['control', mod, "shift"], lazy.group.swap_groups(grp.name))
+        ])
     else:
         keys.extend([
 
