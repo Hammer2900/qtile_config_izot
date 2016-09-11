@@ -66,7 +66,7 @@ keys = [
     Key([mod, "shift"], "space", lazy.window.toggle_floating()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "F5", lazy.spawn("sakura -e ranger")),
-    Key([mod], "F6", lazy.spawn("pcmanfm")),
+    Key([mod], "F6", lazy.spawn("pcmanfm"), lazy.group['fm'].toscreen()),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "w", lazy.layout.maximize()),
 ]
