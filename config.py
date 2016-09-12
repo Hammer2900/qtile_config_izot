@@ -66,6 +66,8 @@ keys = [
     Key([mod, "shift"], "space", lazy.window.toggle_floating()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "F5", lazy.spawn("sakura -e ranger")),
+    Key([mod], "b", lazy.spawn("google-chrome")),
+    Key([mod], "p", lazy.spawn("/home/izot/Downloads/pycharm-community-2016.2.2/bin/pycharm.sh")),
     Key([mod], "F6", lazy.spawn("pcmanfm"), lazy.group['fm'].toscreen()),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "w", lazy.layout.maximize()),
@@ -173,6 +175,10 @@ screens = [
 
 group_app_dict = {
     'firefox-aurora': 'browser',
+    'google-chrome': 'browser',
+    'jetbrains-pycharm-ce': 'pycharm',
+    'Sublime_text': 'text',
+    'pluma': 'browser',
     'skype': 'skype'
 }
 
