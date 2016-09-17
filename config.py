@@ -185,6 +185,11 @@ group_app_dict = {
 
 @hook.subscribe.client_new
 def vue_tools(window):
+    if window.window.get_wm_class() == ('sun-awt-X11-XFramePeer', 'jetbrains-pycharm-ce'):
+        window.togroup('pycharm')
+
+@hook.subscribe.client_new
+def vue_tools(window):
     if window.window.get_wm_class() == ('sublime_text', 'Sublime_text'):
         window.togroup('text')
 
