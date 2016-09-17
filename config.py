@@ -1,6 +1,7 @@
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
+from threading import Thread
 
 import subprocess
 
@@ -84,6 +85,15 @@ groups = [
     Group('8'),
     Group('9'),
 ]
+
+
+def is_running(process):
+    return subprocess.call(["pgrep", "-f", " ".join(process)]) == 0
+
+
+def execute_once(process):
+    if not is_running(process):
+        Thread(target=lambda: subprocess.check_call(process)).start()
 
 for index, grp in enumerate(groups):
     if grp.name == 'skype':
