@@ -200,6 +200,16 @@ def vue_tools(window):
 
 @hook.subscribe.client_new
 def vue_tools(window):
+    if window.window.get_wm_class() == ('Navigator', 'Firefox'):
+        window.togroup('browser')
+
+@hook.subscribe.client_new
+def vue_tools(window):
+    if window.window.get_wm_class() == ('google-chrome', 'google-chrome'):
+        window.togroup('browser')
+
+@hook.subscribe.client_new
+def vue_tools(window):
     if window.window.get_wm_class() == ('sublime_text', 'Sublime_text'):
         window.togroup('text')
 
