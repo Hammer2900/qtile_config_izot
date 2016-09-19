@@ -95,6 +95,18 @@ def execute_once(process):
     if not is_running(process):
         Thread(target=lambda: subprocess.check_call(process)).start()
 
+
+def is_dialog(window):
+    return window.get_wm_type() == "dialog" or window.get_wm_transient_for()
+
+
+def center_window(window):
+    screen_width = 1024
+    screen_height = 800
+
+    window.x = screen_width / 2 - window.x / 2
+    window.y = screen_height / 2 - window.y / 2
+
 for index, grp in enumerate(groups):
     if grp.name == 'skype':
         keys.extend([
