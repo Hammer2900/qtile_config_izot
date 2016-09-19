@@ -1,9 +1,23 @@
+import logging
+import os
+from logging.handlers import RotatingFileHandler
+
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from threading import Thread
 
 import subprocess
+
+# logger = logging.getLogger()
+# logger.setLevel(logging.WARN)
+#
+# handler = RotatingFileHandler(
+#     os.path.join(os.getenv('HOME'), 'qtilelog.txt'), maxBytes=10240000,
+#     backupCount=7
+# )
+# handler.setLevel(logging.WARN)
+# logger.addHandler(handler)
 
 mod = "mod4"
 alt = "mod1"
