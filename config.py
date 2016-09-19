@@ -9,6 +9,8 @@ mod = "mod4"
 alt = "mod1"
 
 pycharm_str = '/home/izot/Downloads/pycharm-community-2016.2.2/bin/pycharm.sh'
+telegramm = ''
+screenshot = 'mate-screenshot --interactive'
 
 keys = [
     # Switch between windows in current stack pane
@@ -73,6 +75,7 @@ keys = [
     Key([mod], "p", lazy.spawn("/home/izot/Downloads/pycharm-community-2016.2.2/bin/pycharm.sh")),
     Key([mod], "F6", lazy.spawn("pcmanfm"), lazy.group['fm'].toscreen()),
     Key([mod], "F8", lazy.spawn(pycharm_str), lazy.group['pycharm'].toscreen()),
+    Key([mod], "F9", lazy.spawn(screenshot)),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "w", lazy.layout.maximize()),
 ]
