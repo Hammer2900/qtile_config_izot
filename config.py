@@ -8,6 +8,8 @@ import subprocess
 mod = "mod4"
 alt = "mod1"
 
+pycharm_str = '/home/izot/Downloads/pycharm-community-2016.2.2/bin/pycharm.sh'
+
 keys = [
     # Switch between windows in current stack pane
     Key(
@@ -70,6 +72,7 @@ keys = [
     Key([mod], "b", lazy.spawn("google-chrome")),
     Key([mod], "p", lazy.spawn("/home/izot/Downloads/pycharm-community-2016.2.2/bin/pycharm.sh")),
     Key([mod], "F6", lazy.spawn("pcmanfm"), lazy.group['fm'].toscreen()),
+    Key([mod], "F8", lazy.spawn(pycharm_str), lazy.group['pycharm'].toscreen()),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "w", lazy.layout.maximize()),
 ]
@@ -230,6 +233,7 @@ def dialogs(window):
     floating_types = ['notification', 'toolbar', 'splash', 'dialog']
     if window.window.get_wm_type() in floating_types or window.window.get_wm_transient_for():
         window.floating = True
+        center_window(window)
 
 @hook.subscribe.client_new
 def grouper(window, windows={'firefox-aurora': 'browser', 'skype': 'skype', 'pcmanfm': 'fm', 'jetbrains-pycharm': 'pycharm'}):
